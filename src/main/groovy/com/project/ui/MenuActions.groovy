@@ -3,6 +3,7 @@ package com.project.ui
 import com.project.model.Candidato
 import com.project.model.Empresa
 import com.project.repository.Database
+import com.project.service.CadstroService
 
 class MenuActions {
 
@@ -21,24 +22,28 @@ class MenuActions {
 
 
     static List<Candidato> listCandidatos() {
-        if(Database.candidatos.isEmpty()){
+        def candidatos = Database.getCandidatos();
+
+        if(candidatos.isEmpty()){
             println "Nenhum candidato cadastrado"
             return
         }
 
-        Database.candidatos.eachWithIndex{ c, i ->
+        candidatos.eachWithIndex{ c, i ->
             println "---- Candidato ${i + 1} ----"
             println c
         }
     }
 
     static List<Empresa> listEmpresas() {
-        if(Database.empresas.isEmpty()){
+        def empresas = Database.getEmpresas();
+
+        if(empresas.isEmpty()){
             println "Nenhuma empresa cadastrada"
             return
         }
 
-        Database.empresas.eachWithIndex{ e, i ->
+        empresas.eachWithIndex{ e, i ->
             println "---- Empresa ${i + 1} ----"
             println e
         }
@@ -77,7 +82,7 @@ class MenuActions {
             .collect{ it.trim() }
 
 
-        Database.candidatos.add(new Candidato(
+        def candidato = new Candidato(
                 nome: nome,
                 email: email,
                 cpf: cpf,
@@ -86,7 +91,9 @@ class MenuActions {
                 cep: cep,
                 descricao: descricao,
                 competencias: competencias
-        ))
+        )
+
+        CadstroService.cadastrarCandidato(candidato)
 
         println "Candidato cadastrado com sucesso!"
 
@@ -123,7 +130,7 @@ class MenuActions {
                 .collect{ it.trim() }
 
 
-        Database.empresas.add(new Empresa(
+        def empresa = new Empresa(
                 nome: nome,
                 email: email,
                 cnpj: cnpj,
@@ -132,7 +139,9 @@ class MenuActions {
                 cep: cep,
                 descricao: descricao,
                 competencias: competencias
-        ))
+        )
+
+        CadstroService.cadastrarEmpresa(empresa)
 
         println "Empresa cadastrada com sucesso!"
 

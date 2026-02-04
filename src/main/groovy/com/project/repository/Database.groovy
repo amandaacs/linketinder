@@ -119,4 +119,20 @@ class Database {
             )
     ]
 
+    static List<Candidato> getCandidatos() {
+        candidatos
+    }
+
+    static List<Empresa> getEmpresas() {
+        empresas
+    }
+
+    static void addCandidato(Candidato candidato) {
+        candidatos.add(candidato)
+    }
+
+    static void addEmpresa(Empresa empresa) {
+        empresas.add(empresa)
+    }
+
 }
