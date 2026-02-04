@@ -103,6 +103,19 @@ groovy src/main/groovy/com/project/Main.groovy
 ```
 ---
 
+## Testes Automatizados
+Este projeto possui testes automatizados utilizando o Spock Framework.
+
+Os testes cobrem principalmente as regras de negócio relacionadas ao cadastro de candidatos e empresas, garantindo que os dados sejam persistidos corretamente.
+
+### Tecnologias de Teste
+* Spock Framework 2.4
+* Groovy 5
+* JUnit Platform
+* Maven Surefire Plugin
+
+---
+
 ## Tecnologias utilizadas
 
 * Groovy
