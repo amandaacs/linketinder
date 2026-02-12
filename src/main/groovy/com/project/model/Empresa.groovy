@@ -8,6 +8,8 @@ class Empresa extends PessoaBase{
     String cep
     String descricao
 
+    //model vaga
+
     @Override
     String toString(){
         """\
