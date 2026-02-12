@@ -3,6 +3,7 @@ import type { Empresa } from "./empresa";
 
 
 export interface Vaga {
+    id: number
     titulo: string
     descricao: string
     pais: string
