@@ -3,13 +3,20 @@ import type { Empresa } from "../models/empresa";
 export class EmpresaService{
     private empresas: Empresa[] = [];
 
+    constructor(){
+        const dadosSalvos = localStorage.getItem('empresas');
+        if(dadosSalvos){
+            this.empresas = JSON.parse(dadosSalvos);
+        }
+    }
+
     public listAll(): Empresa[]{
         return this.empresas;
     }
 
     public getByCnpj(cnpjToFind: string): Empresa | undefined{
 
-        return this.empresas.find(e => e.cnpj === cnpjToFind);;
+        return this.empresas.find(e => e.cnpj === cnpjToFind);
 
     }
 
@@ -19,7 +26,9 @@ export class EmpresaService{
 
         this.empresas.push(newEmpresa);
 
-        return "Cadastro realizado";
+        localStorage.setItem('empresas', JSON.stringify(this.empresas));
+
+        return "Cadastro realizado";        
 
     }
 
@@ -29,6 +38,8 @@ export class EmpresaService{
         if(!empresaDeletar) throw new Error("Empresa não existe.");
 
         this.empresas =  this.empresas.filter(d => d.cnpj !== cnpjEmpresa);
+
+        localStorage.setItem('empresas', JSON.stringify(this.empresas));
 
         return "Empresa " + empresaDeletar.nome + " deletada.";
 

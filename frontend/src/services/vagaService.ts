@@ -3,11 +3,18 @@ import type { Vaga } from "../models/vaga";
 export class VagaService{
     private vagas: Vaga[] = [];
 
+    constructor(){
+        const dadosSalvos = localStorage.getItem('vagas');
+        if(dadosSalvos){
+            this.vagas = JSON.parse(dadosSalvos);
+        }
+    }
+
     public listAll(): Vaga[]{
         return this.vagas;
     }
 
-    public getById(idToFind: number): Vaga | undefined{
+    public getById(idToFind: string): Vaga | undefined{
 
         return this.vagas.find(v => v.id === idToFind);;
 
@@ -19,16 +26,20 @@ export class VagaService{
 
         this.vagas.push(newVaga);
 
+        localStorage.setItem('vagas', JSON.stringify(this.vagas));
+
         return "Cadastro realizado";
 
     }
 
-    public delete(idVaga: number): string{
+    public delete(idVaga: string): string{
         
         const vagaDeletar = this.getById(idVaga);
         if(!vagaDeletar) throw new Error("Vaga não existe.");
 
         this.vagas =  this.vagas.filter(d => d.id !== idVaga);
+
+        localStorage.setItem('vagas', JSON.stringify(this.vagas));
 
         return "Vaga " + vagaDeletar.titulo + " deletada.";
 
