@@ -7,4 +7,6 @@ export interface Candidato{
     nome: string
     email: string
     competencias: string[]
+    telefone: string
+    linkedin: string
 }

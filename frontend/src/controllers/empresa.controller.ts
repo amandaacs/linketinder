@@ -1,6 +1,7 @@
 import { Empresa } from "../models/empresa";
 import { CandidatoService } from "../services/candidatoService";
 import { EmpresaService } from "../services/empresaService";
+import { RegexValidator } from "../utils/validators";
 
 
 export class EmpresaController{
@@ -82,6 +83,19 @@ export class EmpresaController{
         const paisInput = document.getElementById("pais") as HTMLInputElement;
         const estadoInput = document.getElementById("estado") as HTMLInputElement;
         const cepInput = document.getElementById("cep") as HTMLInputElement;
+
+        if (!RegexValidator.nome(nomeInput.value)) {
+            return alert("Erro: O Nome da Empresa é inválido.");
+        }
+        if (!RegexValidator.cnpj(cnpjInput.value)) {
+            return alert("Erro: CNPJ inválido. Digite apenas os 14 números.");
+        }
+        if (!RegexValidator.email(emailInput.value)) {
+            return alert("Erro: E-mail corporativo inválido.");
+        }
+        if (!RegexValidator.cep(cepInput.value)) {
+            return alert("Erro: CEP inválido.");
+        }
 
         const novaEmpresa: Empresa = {
             nome: nomeInput.value,

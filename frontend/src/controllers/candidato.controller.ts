@@ -1,5 +1,6 @@
 import { Candidato } from "../models/candidato";
 import { CandidatoService } from "../services/candidatoService";
+import { RegexValidator } from "../utils/validators";
 
 
 export class CandidatoController{
@@ -46,6 +47,27 @@ export class CandidatoController{
         const estadoInput = document.getElementById("estado") as HTMLInputElement;
         const cepInput = document.getElementById("cep") as HTMLInputElement;
         const competenciasInput = document.getElementById("competencias") as HTMLInputElement;
+        const telefoneInput = document.getElementById("telefone") as HTMLInputElement;
+        const linkedinInput = document.getElementById("linkedin") as HTMLInputElement;
+
+        if (!RegexValidator.nome(nomeInput.value)) {
+            return alert("Erro: Nome deve conter apenas letras e ter no mínimo 3 caracteres.");
+        }
+        if (!RegexValidator.cpf(cpfInput.value)) {
+            return alert("Erro: CPF inválido. Digite apenas os 11 números.");
+        }
+        if (!RegexValidator.email(emailInput.value)) {
+            return alert("Erro: E-mail inválido.");
+        }
+        if (!RegexValidator.telefone(telefoneInput.value)) {
+            return alert("Erro: Telefone inválido. Digite DDD + Número (apenas números).");
+        }
+        if (!RegexValidator.linkedin(linkedinInput.value)) {
+            return alert("Erro: URL do LinkedIn inválida. Deve começar com https://linkedin.com/in/...");
+        }
+        if (!RegexValidator.cep(cepInput.value)) {
+            return alert("Erro: CEP inválido.");
+        }
 
         const novoCandidato: Candidato = {
             nome: nomeInput.value,
@@ -55,7 +77,9 @@ export class CandidatoController{
             descricao: descricaoInput.value,
             estado: estadoInput.value,
             cep: cepInput.value,
-            competencias: (competenciasInput.value).split(",").map(c => c.trim())
+            competencias: (competenciasInput.value).split(",").map(c => c.trim()),
+            telefone: telefoneInput.value,
+            linkedin: linkedinInput.value
         } 
 
         try {
