@@ -126,4 +126,4 @@ Os testes cobrem principalmente as regras de negócio relacionadas ao cadastro d
 ## Autoria
 Projeto desenvolvido por Amanda Costa
 
-Como parte de uma atividade prática para avaliação.
+Como parte de uma atividade prática para avaliação. 
