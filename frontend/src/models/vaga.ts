@@ -11,4 +11,4 @@ export interface Vaga {
     competencias: string[]
     salario: number
     empresa: Empresa
-}
+} 
