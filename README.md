@@ -127,3 +127,29 @@ Os testes cobrem principalmente as regras de negócio relacionadas ao cadastro d
 Projeto desenvolvido por Amanda Costa
 
 Como parte de uma atividade prática para avaliação.
+
+--------------
+
+# Linketinder V2
+
+## Modelo de banco de dados
+
+![modelo_db](db_model/Linketinder_DB.png)
+Criado com https://dbdiagram.io/
+
+### Tabelas
+#### Principais
+* Candidatos
+* Empresas
+* Vagas
+* Competências
+
+
+#### Relações
+* Candidato - Competência
+* Vaga - Competência
+
+
+#### Likes
+* Like - Candidato - Vaga
+* Like - Empresa - Candidato
