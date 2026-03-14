@@ -1,27 +1,77 @@
 package com.project.model
 
-class Empresa extends PessoaBase{
+class Empresa{
 
+    int id
+    String nome
     String cnpj
-    String pais
-    String estado
-    String cep
+    String email
+    String senha
     String descricao
+    String pais
+    String cep
 
-    //model vaga
-
-    @Override
-    String toString(){
-        """\
-            Empresa: $nome
-            Email: $email
-            CNPJ: $cnpj
-            País: $pais
-            Estado: $estado
-            CEP: $cep
-            Descrição: $descricao
-            Competências desejadas: ${competencias.join(', ')}
-        """
+    int getId() {
+        return id
     }
 
+    void setId(int id) {
+        this.id = id
+    }
+
+    String getNome() {
+        return nome
+    }
+
+    void setNome(String nome) {
+        this.nome = nome
+    }
+
+    String getCnpj() {
+        return cnpj
+    }
+
+    void setCnpj(String cnpj) {
+        this.cnpj = cnpj
+    }
+
+    String getEmail() {
+        return email
+    }
+
+    void setEmail(String email) {
+        this.email = email
+    }
+
+    String getSenha() {
+        return senha
+    }
+
+    void setSenha(String senha) {
+        this.senha = senha
+    }
+
+    String getDescricao() {
+        return descricao
+    }
+
+    void setDescricao(String descricao) {
+        this.descricao = descricao
+    }
+
+    String getPais() {
+        return pais
+    }
+
+    void setPais(String pais) {
+        this.pais = pais
+    }
+
+    String getCep() {
+        return cep
+    }
+
+    void setCep(String cep) {
+        this.cep = cep
+    }
 }
